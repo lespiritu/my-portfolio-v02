@@ -9,8 +9,9 @@ export const Home: FC<HomeProps> = ({ message }) => {
   const sayHello = `Printing this message : "${message}"`;
   return (
     <div>
-      <h3>Hello World ! {sayHello}</h3>
       <Navigation />
+      <h3>Hello World ! {sayHello}</h3>
+      
     </div>
   );
 };

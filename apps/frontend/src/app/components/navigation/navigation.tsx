@@ -17,7 +17,7 @@ export const Navigation: FC = () => {
 
   //navigation data
   const navLinkArr = ['About', 'Experience', 'Work', 'Contact'];
-  const navLink = navLinkArr.map((item,index)=><li key={index}>{item}</li>);
+
 
  
   const [navShow, setNavShow] = useState(false);
@@ -55,21 +55,22 @@ export const Navigation: FC = () => {
 
 
   return (
-    
-    <div className={styles.headerPanel}>
-        <img src={logo} alt="" />
-        
-        
-        <div style={{transform:`${styleTranslate}`}} className={`${styles.rightSide} ${styles.show}`}>
-          <ul>{navLink}</ul>
-          <button className={styles.btnResume}>Resume</button>
-        </div>
+    <nav>
+      <div className={styles.navHeaderPanel}>
+          <img src={logo} alt="" />
+          
+          
+          <div style={{transform:`${styleTranslate}`}} className={`${styles.rightSide} ${styles.show}`}>
+            <ul>{navLinkArr.map((item,index)=><li key={index}>{item}</li>)}</ul>
+            <button className={styles.btnResume}>Resume</button>
+          </div>
 
-       { <button onClick={toggleBtn}  className={styles.btnToggle}>
-            <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
-            <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
-            <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
-        </button>}
-    </div>
+        { <button onClick={toggleBtn}  className={styles.btnToggle}>
+              <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
+              <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
+              <span className={btnMenuOpen ? styles.btnLinesChange : styles.btnLines}></span>
+          </button>}
+      </div>
+    </nav>
   );
 };

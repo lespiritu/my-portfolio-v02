@@ -1,4 +1,4 @@
-.headerPanel{
+.navHeaderPanel{
     box-sizing: border-box;
     width: 100vw;
     user-select: none;
@@ -70,7 +70,7 @@
 
 
   @media (max-width: 768px){
-    .headerPanel
+    .navHeaderPanel
     {   box-sizing: border-box;
         width: 100vw;
         user-select: none;
@@ -112,7 +112,7 @@
             }
 
     
-        .headerPanel{
+        .navHeaderPanel{
             .btnToggle{
                 display: block;
                 position: absolute;

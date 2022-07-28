@@ -1,13 +1,14 @@
 /* Color Theme Swatches in Hex */
 
 /* Primary Theme */
-$primaryTeal: #265c4b;
-$teal: #146551;
-$lightTeal: #007566;
-$lighterTeal: #589a8d;
-$lightestTeal: #8fc1b5;
+$black: #0b121e;
+$navy: #0d1420;
+$white: #fff;
+$cream: #ffffe8;
+$yellow: #e89f31;
+$navyLight: #1e2b42;
+$yellowTransparent: rgb(232 159 49 / 12%);
 
-$black: rgb(0, 16, 46);
 $extraDarkGray: rgb(60, 71, 92);
 $darkerGray: rgb(107, 117, 138);
 $darkGray: rgb(138, 148, 168);
@@ -19,7 +20,7 @@ $white: rgb(255, 255, 255);
 
 $themes: (
   light: (
-    primary: $primaryTeal,
+    primary: $black,
   ),
   dark: (
     primary: $black,

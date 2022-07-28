@@ -1,7 +1,9 @@
 import { FC, useEffect, useState } from 'react';
-import logo from './Troll Face.png';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import logo from 'libs/ui/src/assets/images/sample-logo.png';
 
 import styles from './navigation.module.scss';
+import { Button } from 'ui';
 
 export interface NavigationProps {
   navLink: string;
@@ -27,9 +29,7 @@ export const Navigation: FC = () => {
   }
 
   useEffect(() => {
-    setStyletranslate(
-      navShow || windowWidth > 768 ? 'translateX(0)' : 'translateX(100%)'
-    );
+    setStyletranslate(navShow || windowWidth > 768 ? 'translateX(0)' : 'translateX(100%)');
   }, [navShow, windowWidth]);
 
   // when resizing window, getting the width of window
@@ -59,20 +59,14 @@ export const Navigation: FC = () => {
               <li key={index}>{item}</li>
             ))}
           </ul>
-          <button className={styles.btnResume}>Resume</button>
+          <Button label="Resume" variant="primary" className={styles.btnResume} />
         </div>
 
         {
           <button onClick={toggleBtn} className={styles.btnToggle}>
-            <span
-              className={navShow ? styles.btnLinesChange : styles.btnLines}
-            ></span>
-            <span
-              className={navShow ? styles.btnLinesChange : styles.btnLines}
-            ></span>
-            <span
-              className={navShow ? styles.btnLinesChange : styles.btnLines}
-            ></span>
+            <span className={navShow ? styles.btnLinesChange : styles.btnLines}></span>
+            <span className={navShow ? styles.btnLinesChange : styles.btnLines}></span>
+            <span className={navShow ? styles.btnLinesChange : styles.btnLines}></span>
           </button>
         }
       </div>

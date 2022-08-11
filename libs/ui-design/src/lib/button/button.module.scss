@@ -1,4 +1,4 @@
-@import '../../assets/colors';
+@import '../assets/colors';
 
 .button {
   border-radius: 3px;
@@ -35,6 +35,22 @@
     }
   }
 
-  &.secondary {
+  &.outline {
+    color: $black;
+    background-color: transparent;
+    border: 1px solid $lightYellow;
+    border-radius: 4px;
+    padding: 0.45rem 0.6rem;
+    font-family: PrimaryMedium;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    margin-left: 15px;
+    font-size: 14px;
+
+    &:hover {
+      background-color: $yellow;
+    }
   }
 }

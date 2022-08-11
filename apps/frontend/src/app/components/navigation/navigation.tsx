@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import logo from 'libs/ui/src/assets/images/sample-logo.png';
 
 import styles from './navigation.module.scss';
-import { Button } from 'ui';
+import { Button } from '@ui-design';
 
 export interface NavigationProps {
   navLink: string;

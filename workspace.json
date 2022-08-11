@@ -4,6 +4,7 @@
   "projects": {
     "frontend": "apps/frontend",
     "frontend-e2e": "apps/frontend-e2e",
-    "ui": "libs/ui"
+    "ui": "libs/ui",
+    "ui-design": "libs/ui-design"
   }
 }

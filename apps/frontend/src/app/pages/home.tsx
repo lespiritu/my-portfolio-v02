@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Navigation } from '../components';
-import { Typography } from 'ui';
+import { Typography } from '@ui-design';
 
 export const Home: FC = () => {
   return (

@@ -3,7 +3,9 @@ import { FC, useEffect, useState } from 'react';
 import logo from 'libs/ui/src/assets/images/sample-logo.png';
 
 import styles from './navigation.module.scss';
-import { Button } from 'ui';
+import { Button } from '@ui-design';
+
+import { NavigationBanner } from '@enums';
 
 export interface NavigationProps {
   navLink: string;
@@ -15,7 +17,7 @@ export interface NavigationProps {
 
 export const Navigation: FC = () => {
   //navigation data
-  const navLinkArr = ['About', 'Experience', 'Work', 'Contact'];
+  const navLinkArr = Object.values(NavigationBanner);
 
   const [navShow, setNavShow] = useState(false);
   const [styleTranslate, setStyletranslate] = useState('translateX(100%)');

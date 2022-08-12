@@ -1,79 +1,76 @@
-import { FC, useState } from "react"
-import { BsFolder2Open } from 'react-icons/bs'
-import { ImGithub } from 'react-icons/im'
-import { HiOutlineExternalLink } from 'react-icons/hi'
-import {cardData} from "./card-data"
-import styles from './card.module.scss'
-import { Button } from 'ui';
+import { FC } from 'react';
+import { BsFolder2Open as IconOpenFolder } from 'react-icons/bs';
+import { ImGithub as IconGithub } from 'react-icons/im';
+import { HiOutlineExternalLink } from 'react-icons/hi';
+import styles from './card.module.scss';
+import { Typography } from '@ui-design';
 
 export interface CardProps {
-    id:number;
-    title:string;
-    content:string;
-    footer:string[];
-    externalLink:string;
-    gitHubLink?:string;
-    isActive:boolean;
-    activeHandler:(id:number)=> void;
+  id: number;
+  title: string;
+  content: string;
+  footer: string[];
+  externalLink: string;
+  gitHubLink?: string;
+  isActive: boolean;
+  activeHandler: (id: number) => void;
 }
 
-const Card: FC<CardProps> = (props)=>{  
+export const Card: FC<CardProps> = (props) => {
+  const openLink = (link?: string) => window.open(link);
 
-    const linkHandler = (link?:string)=> window.open(link);
-    
-    const cardClickHandler = ()=>{
-        props.activeHandler(props.id);
-        linkHandler(props.externalLink);
-    }
+  const { id, activeHandler, externalLink, gitHubLink, title, isActive, content, footer } = props;
+  const onClickHandler = () => {
+    activeHandler(id);
+    openLink(externalLink);
+  };
 
-    return(
-        <div onClick={cardClickHandler} className={styles.card} >
-                <ul className={styles.headerIcon}>
-                    <li className={styles.folderIcon}><BsFolder2Open/></li>
-                    {props.gitHubLink && <li onClick={()=>linkHandler(props.gitHubLink)} className={styles.gitHubLink}> <ImGithub/></li>}
-                    <li onClick={()=>linkHandler(props.externalLink)} className={styles.externalLink}><HiOutlineExternalLink/></li>
-                </ul>
-
-            <div className={styles.content}>
-                <span className={props.isActive? styles.contentTitleActive : styles.contentTitle}> {props.title}</span>
-                <p className={styles.contentBody}>{props.content}</p>
-                <ul className={styles.cardFooter}>
-                    {props.footer.map((item,index)=><li key={index}>{item}</li>)}
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-
-export const CardParent: FC = ()=>{
-    const [cardDataUpdate, setCardDataUpdate] = useState(cardData);
-    const activeHandler = (id:number)=>{
-        setCardDataUpdate(previousVal=>{
-            return previousVal.map(item=>(item.id === id? {...item, isActive:true}: {...item, isActive:false}))
-        })
-    }   
-    // const cards = cardDataUpdate.map((item,index)=><Card key={index} activeHandler={activeHandler}{...item}/>)
-
-    const [cardShowAll, setCardShowAll] = useState(false);
-
-    const cardLengthHandler = ()=>{
-       setCardShowAll(previous=>!previous);
-    }
-     const cardLength = cardShowAll ? cardDataUpdate.length : 6;
-    
-    const cards = [];
-    for (let i = 0; i < cardLength ; i++) {
-        cards.push(<Card activeHandler={activeHandler} key={cardDataUpdate[i].id} {...cardDataUpdate[i]}/>) 
-    }
-    
-    return(
-      <div className={styles.cards}>
-          <div className={styles.cardContainer}>
-            {cards}
-           
-          </div>
-        <Button onClick={cardLengthHandler} label={cardShowAll? 'Show less' : 'Show More'} variant="primary" className={styles.btnCardShow} />
+  const renderCardHeader = () => {
+    return (
+      <div className={styles.cardHeader}>
+        <ul className={styles.headerIcon}>
+          <li className={styles.folderIcon}>
+            <IconOpenFolder />
+          </li>
+          {gitHubLink && (
+            <li onClick={() => openLink(gitHubLink)} className={styles.gitHubLink}>
+              <IconGithub />
+            </li>
+          )}
+          <li onClick={() => openLink(externalLink)} className={styles.externalLink}>
+            <HiOutlineExternalLink />
+          </li>
+        </ul>
       </div>
-    )
-}
+    );
+  };
+
+  const renderCardContent = () => (
+    <div className={styles.cardContent}>
+      <span className={isActive ? styles.contentTitleActive : styles.contentTitle}>
+        <Typography variant="header2">
+          {title} #{id}
+        </Typography>
+      </span>
+      <p className={styles.contentBody}>{<Typography variant="paragraph">{content}</Typography>}</p>
+    </div>
+  );
+
+  const renderCardFooter = () => (
+    <div className={styles.cardFooter}>
+      <ul className={styles.cardFooter}>
+        {footer.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  return (
+    <div onClick={onClickHandler} className={styles.card}>
+      {renderCardHeader()}
+      {renderCardContent()}
+      {renderCardFooter()}
+    </div>
+  );
+};

@@ -1,127 +1,97 @@
-@import 'libs/ui/src/assets/colors';
+@import 'libs/ui-design/src/lib/assets/colors';
 
-.cardContainer{
-    box-sizing: border-box;
-    padding: 20px;
+.cardlink {
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+
+.card {
+  box-sizing: border-box;
+  font-family: PrimaryLight;
+  background-color: $navyLight;
+  color: $white;
+  border-radius: 5px;
+  padding: 25px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &:hover .content .contentTitle {
+    color: $yellow;
+  }
+
+  .headerIcon {
+    display: flex;
     width: 100%;
-    margin: auto auto;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-auto-rows: 1fr;
-    gap:20px;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+
+    @mixin iconHover {
+      color: $yellow;
+    }
+
+    .folderIcon {
+      margin-right: auto;
+      font-size: 30px;
+      color: $darkerGray;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        @include iconHover();
+      }
+    }
+
+    .gitHubLink,
+    .externalLink {
+      color: $darkerGray;
+      font-size: 20px;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        @include iconHover();
+      }
+    }
+  }
+
+  .cardContent {
+    .contentTitleActive {
+      font-size: 2rem;
+      margin-top: 20px;
+      display: block;
+
+      transition: 0.3s ease-in-out;
+      color: $yellow;
+      user-select: none;
+    }
+
+    .contentTitle {
+      font-size: 2rem;
+      margin-top: 20px;
+      display: block;
+
+      transition: 0.3s ease-in-out;
+      user-select: none;
+    }
+    .contentBody {
+      line-height: 1.5rem;
+      user-select: none;
+    }
+  }
+
+  .cardFooter {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    user-select: none;
+  }
 }
-
-
-.cardlink{
-    text-decoration: none;
-    transition: 0.2s ease-in-out;
-
-}
-
-
-.card{
-    box-sizing: border-box;
-    font-family: PrimaryLight;
-    background-color: $navyLight;
-    color: $white;
-    border-radius: 5px;
-    padding: 25px;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-    
-    &:hover{
-        transform: translateY(-5px);
-    }
-
-    &:hover .content .contentTitle{
-        color: $yellow;
-        
-    }
-
-    .headerIcon{
-        
-        display: flex;
-        width: 100%;
-        justify-content: flex-end;
-        gap:10px;
-        align-items: center;
-        list-style: none;
-        padding-left: 0;
-        
-        @mixin iconHover {
-            color:$yellow;
-        }
-
-        .folderIcon{
-            margin-right: auto;
-            font-size: 30px;
-            color:$darkerGray;
-            transition: 0.2s ease-in-out;
-            
-            &:hover{
-                @include iconHover()
-            }
-        }
-
-        .gitHubLink, .externalLink{
-            color:$darkerGray;
-            font-size: 20px;
-            transition: 0.2s ease-in-out;
-
-            &:hover{
-                @include iconHover()
-            }
-        }
-
-    }
-
-
-
-    .content{
-        .contentTitleActive{
-            font-size: 2rem;
-            margin-top: 20px;
-            display: block;
-
-            transition: 0.3s ease-in-out;
-            color: $yellow;
-            user-select: none;
-        }
-
-
-        .contentTitle{
-            font-size: 2rem;
-            margin-top: 20px;
-            display: block;
-
-            transition: 0.3s ease-in-out;
-            user-select: none;
-        }
-        .contentBody{
-            line-height: 1.5rem;
-            user-select: none;
-        }
-
-        .cardFooter{
-            display: flex;
-            gap:10px;
-            font-size: 14px;
-            list-style: none;
-            padding: 0;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            user-select: none;
-        }
-    }
-}
-
-.cards{
-    
-    .btnCardShow{
-        margin: 30px auto;
-
-    }
-
-}
- 

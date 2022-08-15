@@ -25,6 +25,8 @@ export const Card: FC<CardProps> = (props) => {
     openLink(externalLink);
   };
 
+ 
+  
   const renderCardHeader = () => {
     return (
       <div className={styles.cardHeader}>

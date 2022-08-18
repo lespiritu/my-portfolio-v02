@@ -8,7 +8,7 @@ export interface sectionProps {
     title: string;
     sectionNumber: string;
     variant?: 'primary' | 'centered';
-    children?: JSX.Element;
+    children?: React.ReactNode;
     className?: string;
     
 }

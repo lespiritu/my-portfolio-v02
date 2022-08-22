@@ -17,7 +17,8 @@
 
         .line{
             background-color: $extraDarkGray;
-            width: 350px;
+            flex: 1 1 ;
+            max-width: 350px;
             height: 1px;
             display: block;
             align-self: center;
@@ -33,6 +34,7 @@
         .title{
             color:$lightestGray;
             font-family: PrimaryBold;
+            
         }
         
 

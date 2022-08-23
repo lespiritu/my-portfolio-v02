@@ -1,18 +1,20 @@
 import { FC, useState, useEffect } from 'react';
 import { cardData } from '../card-list/card-list-dummy-data';
-import { Button } from '@ui-design';
-import { Card } from '../card';
+import { Button, Card } from '@ui-design';
+
 import styles from './card-list.module.scss';
 
 export const CardList: FC = () => {
   const initialCardsCount = 6;
   const [cardsToShow, setCardsToShow] = useState(cardData.slice(0, initialCardsCount));
+
+  
   const activeHandler = (id: number) => {
-    // setCardDataUpdate((previousVal) => {
-    //   return previousVal.map((item) =>
-    //     item.id === id ? { ...item, isActive: true } : { ...item, isActive: false }
-    //   );
-    // });
+    setCardsToShow((previousVal) => {
+      return previousVal.map((item) =>
+        item.id === id ? { ...item, isActive: true } : { ...item, isActive: false }
+      );
+    });
   };
 
   // const cards = cardDataUpdate.map((item,index)=><Card key={index} activeHandler={activeHandler}{...item}/>)

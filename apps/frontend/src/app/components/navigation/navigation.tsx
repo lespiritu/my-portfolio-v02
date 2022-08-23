@@ -49,6 +49,9 @@ export const Navigation: FC = () => {
 
   return (
     <nav>
+       {navShow && <div onClick={toggleBtn} className={styles.blurBackground}></div>}
+      
+      
       <div className={styles.navHeaderPanel}>
         <img src={logo} alt="" />
 
@@ -72,6 +75,8 @@ export const Navigation: FC = () => {
           </button>
         }
       </div>
+
+     
     </nav>
   );
 };

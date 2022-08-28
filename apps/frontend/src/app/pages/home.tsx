@@ -4,8 +4,11 @@ import { CardList } from '../components';
 import styles from './home.module.scss';
 import cn from 'classnames';
 import { Section } from '@ui-design';
+import {FeaturedProjectList} from '../components'
+
 
 export const Home: FC = () => {
+ 
   return (
     <div>
       <header className={styles.header}>
@@ -21,6 +24,11 @@ export const Home: FC = () => {
          </div>
          
         </Section>
+
+        <Section sectionNumber='02' title="Some Thing I've Built" variant='primary'>
+          <FeaturedProjectList/>
+        </Section>
+
       </main>
     </div>
   );

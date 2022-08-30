@@ -1,0 +1,30 @@
+
+
+.tabContent{
+    padding:0 30px;
+    color:rgb(230, 230, 230);
+
+    .title{
+        color:rgb(90, 240, 232);
+    }
+    .subTitle{
+        color:rgb(0, 212, 177);
+    }
+
+    .listContent{
+        
+        li{
+            position: relative;
+            margin:20px 0 15px;
+            list-style: none;
+            &::before{
+                content: '\25B6  ';
+                margin-left:-20px ;
+                font-size: 10px;
+                color:rgb(175, 255, 255);
+                position: absolute;
+            }
+            
+        }
+    }
+}

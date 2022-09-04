@@ -25,8 +25,6 @@ export const Card: FC<CardProps> = (props) => {
     openLink(externalLink);
   };
 
- 
-  
   const renderCardHeader = () => {
     return (
       <div className={styles.cardHeader}>
@@ -54,7 +52,11 @@ export const Card: FC<CardProps> = (props) => {
           {title} #{id}
         </Typography>
       </span>
-      <p className={styles.contentBody}>{<Typography variant="paragraph">{content}</Typography>}</p>
+      {
+        <Typography variant="paragraph" className={styles.contentBody}>
+          {content}
+        </Typography>
+      }
     </div>
   );
 

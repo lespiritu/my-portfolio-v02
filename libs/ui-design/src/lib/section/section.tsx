@@ -10,6 +10,7 @@ export interface sectionProps {
   children?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  name: string;
 }
 
 export const Section: FC<sectionProps> = (props) => {
@@ -44,7 +45,7 @@ export const Section: FC<sectionProps> = (props) => {
   };
 
   return (
-    <div style={style} className={cn(styles.section, props.className)}>
+    <div id={props.name} style={style} className={cn(styles.section, props.className)}>
       {renderSectionHead()}
       {renderSectionBody()}
     </div>

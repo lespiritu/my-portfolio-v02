@@ -5,15 +5,14 @@ stages: # List of stages for jobs, and their order of execution
 
 build: # This job runs in the build stage, which runs first.
   stage: build
-  image: node:16
   script:
     - echo "Building project..."
-    - ls
     - echo $FRONTEND_BUCKET
     - echo $CLOUDFRONT_DISTRIBUTION_ID
     - npm ci
     - npx nx build frontend
     - echo "Build complete."
+    - ls
 
 unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
@@ -29,14 +28,14 @@ lint-test: # This job also runs in the test stage.
     - sleep 5
     - echo "No lint issues found."
 
-deploy: # This job runs in the deploy stage.
+deploy to s3: # This job runs in the deploy stage.
   stage: deploy # It only runs when *both* jobs in the test stage complete successfully.
   image:
     name: amazon/aws-cli
     entrypoint: ['']
   script:
     - echo "Deploying application..."
-    - ls
+    - aws --version
     - echo "Syncing to S3 bucket"
     - aws s3 cp dist/apps/frontend s3://$FRONTEND_BUCKET --recursive --exclude "*.js.map" --metadata-directive REPLACE --cache-control max-age=2592000,public # 30 days
     - aws s3 cp dist/apps/frontend/index.html s3://$FRONTEND_BUCKET/index.html --metadata-directive REPLACE --cache-control "" # reset html file data since we dont want it to be cached on the browser

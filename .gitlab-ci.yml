@@ -39,6 +39,7 @@ build: # This job runs in the build stage, which runs first.
 
 unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
+  image: node:16.5.0
   script:
     - echo "Running frontend unit tests... "
     - npx nx test frontend
@@ -49,6 +50,7 @@ unit-test: # This job runs in the test stage.
 
 lint-test: # This job also runs in the test stage.
   stage: test # It can run at the same time as unit-test-job (in parallel).
+  image: node:16.5.0
   script:
     - echo "Linting code... This will take about 5 seconds."
     - sleep 5

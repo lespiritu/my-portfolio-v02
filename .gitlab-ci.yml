@@ -41,12 +41,14 @@ unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
   image: node:16.5.0
   script:
+    - npm ci
     - echo "Running frontend unit tests... "
     - npx nx test frontend
     - echo "Frontend Unit test completed!"
     - echo "Running ui-design lib unit tests"
     - npx nx test ui-design
     - echo "ui-design Unit test completed!"
+    - echo "Run this to test all npx nx run-many --target=test --all"
 
 lint-test: # This job also runs in the test stage.
   stage: test # It can run at the same time as unit-test-job (in parallel).

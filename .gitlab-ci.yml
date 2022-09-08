@@ -5,6 +5,7 @@ stages: # List of stages for jobs, and their order of execution
 
 build: # This job runs in the build stage, which runs first.
   stage: build
+  image: 16.5.0
   script:
     - echo "Building project..."
     - echo $FRONTEND_BUCKET

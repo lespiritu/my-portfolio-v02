@@ -1,7 +1,6 @@
 import { Link } from 'react-scroll';
 
 import { FC, useEffect, useState } from 'react';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import logo from 'libs/ui-design/src/lib/assets/images/sample-logo.png';
 
 import styles from './navigation.module.scss';

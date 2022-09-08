@@ -59,4 +59,4 @@ deploy:prod: # This job runs in the deploy stage.
 deploy:dev:
   <<: *deploy_frontend
   rules:
-    - if: $CI_COMMIT_BRANCH == development
+    - if: $CI_COMMIT_BRANCH == "development"

@@ -1,3 +1,5 @@
+import { Link } from 'react-scroll';
+
 import { FC, useEffect, useState } from 'react';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import logo from 'libs/ui-design/src/lib/assets/images/sample-logo.png';
@@ -49,9 +51,8 @@ export const Navigation: FC = () => {
 
   return (
     <nav>
-       {navShow && <div onClick={toggleBtn} className={styles.blurBackground}></div>}
-      
-      
+      {navShow && <div onClick={toggleBtn} className={styles.blurBackground}></div>}
+
       <div className={styles.navHeaderPanel}>
         <img src={logo} alt="" />
 
@@ -61,7 +62,11 @@ export const Navigation: FC = () => {
         >
           <ul>
             {navLinkArr.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index}>
+                <Link to={item} spy={true} smooth={true} offset={-120} duration={500}>
+                  {item}
+                </Link>
+              </li>
             ))}
           </ul>
           <Button label="Resume" variant="primary" className={styles.btnResume} />
@@ -75,8 +80,6 @@ export const Navigation: FC = () => {
           </button>
         }
       </div>
-
-     
     </nav>
   );
 };

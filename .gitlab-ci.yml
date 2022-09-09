@@ -33,6 +33,7 @@ stages: # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
+  - post deploy
 
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend
@@ -67,3 +68,10 @@ deploy:dev:
   <<: *deploy_frontend
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
+
+post-deploy:prod:
+  image: curlimages/curl
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  script:
+    - curl https://sebulinozeke.com | grep Frontend

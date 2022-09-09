@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 export default {
   displayName: 'frontend',
   preset: '../../jest.preset.js',
@@ -6,6 +7,11 @@ export default {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
+
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/apps/frontend',
+
+  moduleNameMapper: {
+    'assets/(.*)': ['../../../../../../libs/ui-design/src/lib/assets/$1'],
+  },
 };

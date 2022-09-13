@@ -44,10 +44,10 @@ unit-test: # This job runs in the test stage.
   script:
     - npm ci
     - echo "Running frontend unit tests... "
-    - npx nx test frontend
+    - npx nx test frontend --verbose
     - echo "Frontend Unit test completed!"
     - echo "Running ui-design lib unit tests"
-    - npx nx test ui-design
+    - npx nx test ui-design --verbose
     - echo "ui-design Unit test completed!"
     - echo "Run this to test all npx nx run-many --target=test --all"
 

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import App from './app';
 
@@ -9,9 +9,9 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
+  it('should have a greeting Hi, my name is', () => {
     const { getByText } = render(<App />);
 
-    expect(getByText(/Welcome frontend/gi)).toBeTruthy();
+    expect(getByText(/Hi, my name is/i)).toBeTruthy();
   });
 });

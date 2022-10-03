@@ -3,6 +3,9 @@ import styles from './section.module.scss';
 import cn from 'classnames';
 import { Typography } from '@ui-design';
 
+import { motion } from 'framer-motion';
+import { useAnimate } from '@ui-design';
+
 export interface sectionProps {
   title: string;
   sectionNumber: string;
@@ -29,14 +32,20 @@ export const Section: FC<sectionProps> = (props) => {
 
   const renderSectionHead = () => {
     return (
-      <div className={cn(props.className, styles.sectionHeader, getVariant(props))}>
+      <motion.div
+        variants={useAnimate(0, 0.5)}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 'some' }}
+        className={cn(props.className, styles.sectionHeader, getVariant(props))}
+      >
         {variant === 'primary' && <span className={styles.number}>{sectionNumber}</span>}
 
         <span className={styles.title}>
           <Typography variant="header2">{title}</Typography>
         </span>
         {variant === 'primary' && <span className={styles.line}></span>}
-      </div>
+      </motion.div>
     );
   };
 

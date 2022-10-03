@@ -8,7 +8,6 @@ export const CardList: FC = () => {
   const initialCardsCount = 6;
   const [cardsToShow, setCardsToShow] = useState(cardData.slice(0, initialCardsCount));
 
-  
   const activeHandler = (id: number) => {
     setCardsToShow((previousVal) => {
       return previousVal.map((item) =>
@@ -36,8 +35,8 @@ export const CardList: FC = () => {
   return (
     <div className={styles.cards}>
       <div className={styles.cardContainer}>
-        {cardsToShow.map((card) => (
-          <Card activeHandler={activeHandler} key={card.id} {...card} />
+        {cardsToShow.map((card, index) => (
+          <Card activeHandler={activeHandler} index={index} key={card.id} {...card} />
         ))}
       </div>
       <Button

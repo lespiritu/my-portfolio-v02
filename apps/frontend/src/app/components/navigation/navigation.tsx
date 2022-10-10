@@ -1,12 +1,13 @@
 import { Link } from 'react-scroll';
 
 import { FC, useEffect, useState } from 'react';
-import logo from 'libs/ui-design/src/lib/assets/images/sample-logo.png';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import logo from 'libs/ui-design/src/lib/assets/images/dream-dev1.png';
 
 import styles from './navigation.module.scss';
 import { Button } from '@ui-design';
 
-import { NavigationBanner } from '@enums';
+import { NavigationBanner, DefaultDocTitle } from '@enums';
 
 export interface NavigationProps {
   navLink: string;
@@ -17,6 +18,18 @@ export interface NavigationProps {
 }
 
 export const Navigation: FC = () => {
+  //changing title
+  const defaultDocTitle: string = DefaultDocTitle.title;
+
+  const [docTitle, setDoctTitle] = useState(defaultDocTitle);
+  useEffect(() => {
+    document.title = docTitle;
+  }, [docTitle]);
+
+  const handlerDocTitle = (title: string) => {
+    setDoctTitle((previous) => (previous = `${defaultDocTitle} - ${title}`));
+  };
+
   //navigation data
   const navLinkArr = Object.values(NavigationBanner);
 
@@ -53,7 +66,7 @@ export const Navigation: FC = () => {
       {navShow && <div onClick={toggleBtn} className={styles.blurBackground}></div>}
 
       <div className={styles.navHeaderPanel}>
-        <img src={logo} alt="" />
+        <img src={logo} alt="logo" />
 
         <div
           style={{ transform: `${styleTranslate}` }}
@@ -62,7 +75,14 @@ export const Navigation: FC = () => {
           <ul>
             {navLinkArr.map((item, index) => (
               <li key={index}>
-                <Link to={item} spy={true} smooth={true} offset={-120} duration={500}>
+                <Link
+                  to={item}
+                  onClick={() => handlerDocTitle(item)}
+                  spy={true}
+                  smooth={true}
+                  offset={-120}
+                  duration={500}
+                >
                   {item}
                 </Link>
               </li>

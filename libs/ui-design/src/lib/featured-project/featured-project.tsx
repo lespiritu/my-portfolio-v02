@@ -4,6 +4,8 @@ import styles from './featured-project.module.scss';
 import cn from 'classnames';
 import { ImGithub as IconGithub } from 'react-icons/im';
 import { HiOutlineExternalLink as IconExternalLink } from 'react-icons/hi';
+import { motion } from 'framer-motion';
+import { useAnimate } from '@ui-design';
 
 export interface ProjectProps {
   className?: string;
@@ -21,16 +23,8 @@ export interface ProjectProps {
 }
 
 export const FeaturedProject: FC<ProjectProps> = (props) => {
-  const {
-    title,
-    descriptionText,
-    usedTools,
-    githubLink,
-    externalLink,
-    imageLink,
-    learnMoreLink,
-    children,
-  } = props;
+  const { title, descriptionText, usedTools, githubLink, externalLink, imageLink, children } =
+    props;
 
   const handlerClick = (link?: string) => window.open(link);
 
@@ -100,12 +94,16 @@ export const FeaturedProject: FC<ProjectProps> = (props) => {
   };
 
   return (
-    <div
+    <motion.div
+      variants={useAnimate(0, 0.5)}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 'some' }}
       style={props.style}
       className={cn(styles.featuredProject, styles.className, getVariant(props))}
     >
       {renderDetails()}
       {renderImage()}
-    </div>
+    </motion.div>
   );
 };

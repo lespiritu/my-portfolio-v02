@@ -1,9 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { BsFolder2Open as IconOpenFolder } from 'react-icons/bs';
 import { ImGithub as IconGithub } from 'react-icons/im';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import styles from './card.module.scss';
 import { Typography } from '@ui-design';
+import { motion } from 'framer-motion';
+import { useAnimate } from '@ui-design';
 
 export interface CardProps {
   id: number;
@@ -14,6 +16,8 @@ export interface CardProps {
   gitHubLink?: string;
   isActive: boolean;
   activeHandler: (id: number) => void;
+
+  index: number;
 }
 
 export const Card: FC<CardProps> = (props) => {
@@ -70,11 +74,22 @@ export const Card: FC<CardProps> = (props) => {
     </div>
   );
 
+  // this code is for animation using framer motion
+  const [delayNum, setDelayNum] = useState(props.index);
+  delayNum > 5 && setDelayNum((previous) => previous - 6);
+
   return (
-    <div onClick={onClickHandler} className={styles.card}>
+    <motion.div
+      variants={useAnimate(delayNum, 0.2)}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.2 }}
+      onClick={onClickHandler}
+      className={styles.card}
+    >
       {renderCardHeader()}
       {renderCardContent()}
       {renderCardFooter()}
-    </div>
+    </motion.div>
   );
 };

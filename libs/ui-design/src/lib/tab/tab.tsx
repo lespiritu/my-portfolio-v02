@@ -12,12 +12,11 @@ export const Tab: FC<tabProps> = ({ tabHeader, tabContent }) => {
   const [activeLink, setActiveLink] = useState(0);
   const tabList = useRef<HTMLLIElement | null>(null);
   const [tabListWidth, setTabListWidth] = useState(tabList.current?.clientWidth);
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     setTabListWidth(tabList.current?.clientWidth);
-  }, []);
+  }, [windowWidth]);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const getWindowWidth = () => {
       setWindowWidth((previous) => (previous = window.innerWidth));

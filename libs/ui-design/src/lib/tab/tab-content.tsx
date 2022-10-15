@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import styles from './tab-content.module.scss';
 import { Typography } from '@ui-design';
+import { motion } from 'framer-motion';
+import { useAnimate } from '@ui-design';
 
 export interface TabContentProps {
   title?: string;
@@ -12,7 +14,12 @@ export const TabContent: FC<TabContentProps> = (props) => {
   const { title, subTitle, listContent, content } = props;
 
   return (
-    <div className={styles.tabContent}>
+    <motion.div
+      variants={useAnimate(0, 0.5)}
+      initial="offscreen"
+      animate="onscreen"
+      className={styles.tabContent}
+    >
       {title && (
         <Typography variant="header2">
           <span className={styles.title}>{title}</span>
@@ -33,6 +40,6 @@ export const TabContent: FC<TabContentProps> = (props) => {
           ))}
         </ul>
       )}
-    </div>
+    </motion.div>
   );
 };

@@ -37,6 +37,8 @@ stages: # List of stages for jobs, and their order of execution
 
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend
+  rules:
+    - if: $CI_COMMIT_BRANCH != "personal"
 
 unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
@@ -50,6 +52,8 @@ unit-test: # This job runs in the test stage.
     - npx nx test ui-design --verbose
     - echo "ui-design Unit test completed!"
     - echo "Run this to test all npx nx run-many --target=test --all"
+  rules:
+    - if: $CI_COMMIT_BRANCH != "personal"
 
 lint-test: # This job also runs in the test stage.
   stage: test # It can run at the same time as unit-test-job (in parallel).
@@ -58,6 +62,8 @@ lint-test: # This job also runs in the test stage.
     - echo "Linting code... This will take about 5 seconds."
     - sleep 5
     - echo "No lint issues found."
+  rules:
+    - if: $CI_COMMIT_BRANCH != "personal"
 
 deploy:prod: # This job runs in the deploy stage.
   <<: *deploy_frontend

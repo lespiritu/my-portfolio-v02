@@ -6,7 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "frontend:stack:build,deploy": "nx build frontend && nx build iac && cdk deploy --profile=zeke  --app=dist/libs/iac/src/main.js"
+    "delete:stack": "aws cloudformation delete-stack --profile=zeke --stack-name",
+    "frontend:stack:build,deploy": "npx nx build frontend && npx nx build iac && cdk deploy --app=dist/libs/iac/src/main.js"
   },
   "private": true,
   "dependencies": {

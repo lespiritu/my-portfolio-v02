@@ -17,7 +17,7 @@ export const provisionS3DistributionWebsite = (
   route53HostedZone: route53.IHostedZone
 ) => {
   // Provision S3 Bucket
-  const bucket = new s3.Bucket(scope, 'WebsiteBucket', {
+  const bucket = new s3.Bucket(scope, `${domainName}WebsiteBucket`, {
     bucketName,
     accessControl: s3.BucketAccessControl.PUBLIC_READ,
     websiteErrorDocument: 'index.html',
@@ -26,7 +26,7 @@ export const provisionS3DistributionWebsite = (
     autoDeleteObjects: true,
   });
 
-  cdk.Tags.of(bucket).add('tag1', 'MyTag');
+  cdk.Tags.of(bucket).add('WebsiteBucket', domainName);
 
   bucket.addToResourcePolicy(
     new iam.PolicyStatement({
@@ -38,7 +38,7 @@ export const provisionS3DistributionWebsite = (
   );
 
   // Provision Cloudfront distribution
-  const cfdistribution = new cloudfront.Distribution(scope, 'WebsiteDistribution', {
+  const cfdistribution = new cloudfront.Distribution(scope, `${domainName}WebsiteDistribution`, {
     defaultBehavior: {
       origin: new origins.S3Origin(bucket),
       viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
@@ -63,22 +63,22 @@ export const provisionS3DistributionWebsite = (
   //
   const target = route53.RecordTarget.fromAlias(new alias.CloudFrontTarget(cfdistribution));
 
-  new route53.ARecord(scope, 'WebsiteRecord', {
+  new route53.ARecord(scope, `${domainName}WebsiteRecord`, {
     zone: route53HostedZone,
     target,
     recordName: domainName,
     ttl: cdk.Duration.seconds(300),
   });
 
-  new cdk.CfnOutput(scope, 'WebsiteUrl', {
+  new cdk.CfnOutput(scope, `${domainName}WebsiteUrl`, {
     value: `https://${domainName}`,
   });
 
-  new cdk.CfnOutput(scope, `WebsiteDistributionId`, {
+  new cdk.CfnOutput(scope, `${domainName}WebsiteDistributionId`, {
     value: cfdistribution.distributionId,
   });
 
-  new s3deploy.BucketDeployment(scope, `WebsiteBucketDeploymentV3`, {
+  new s3deploy.BucketDeployment(scope, `${domainName}WebsiteBucketDeploymentV3`, {
     sources: [s3deploy.Source.asset(`dist/apps/frontend`)],
     destinationBucket: bucket,
     distribution: cfdistribution,

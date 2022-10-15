@@ -4,7 +4,7 @@ import { PortfolioStackShape } from './portfolio.shape';
 import { provisionS3DistributionWebsite } from './s3-distribution-website';
 import { provisionCertificate } from './provision-certifiate';
 import { getRoute53HostedZone } from './route53';
-import { baseDomain } from './domain';
+import { baseDomain, leoWebsite, zekeWebsite } from './domain';
 
 export class PortfolioStack extends Stack implements PortfolioStackShape {
   constructor(scope: Construct, stackId: string, props?: StackProps) {
@@ -18,8 +18,16 @@ export class PortfolioStack extends Stack implements PortfolioStackShape {
     // example resource
     provisionS3DistributionWebsite(
       this,
-      `leoportfolio.${baseDomain}`,
-      'leo-portfolio-website',
+      `${leoWebsite.domain}.${baseDomain}`,
+      leoWebsite.bucket,
+      certificate,
+      phZone
+    );
+
+    provisionS3DistributionWebsite(
+      this,
+      `${zekeWebsite.domain}.${baseDomain}`,
+      zekeWebsite.bucket,
       certificate,
       phZone
     );

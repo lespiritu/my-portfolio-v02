@@ -17,6 +17,7 @@
     "paths": {
       "@appScss": ["libs/ui-design/src/lib/assets/app.scss"],
       "@enums": ["libs/shared/enums/src/index.ts"],
+      "@iac": ["libs/iac/src/index.ts"],
       "@shapes": ["libs/shared/shapes/src/index.ts"],
       "@ui-design": ["libs/ui-design/src/index.ts"],
       "appScss": ["libs/ui/src/assets/app.scss"],

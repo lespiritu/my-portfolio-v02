@@ -4,6 +4,7 @@
   "projects": {
     "frontend": "apps/frontend",
     "frontend-e2e": "apps/frontend-e2e",
+    "iac": "libs/iac",
     "shared-enums": "libs/shared/enums",
     "shared-shapes": "libs/shared/shapes",
     "ui": "libs/ui",

@@ -8,7 +8,7 @@ export const Intro = () => {
         Hi, my name is
       </Typography>
       <Typography className={styles.name} variant="header1">
-        Leo Espi
+        Sample
       </Typography>
       <Typography className={styles.title} variant="header1">
         fullstack software engineer

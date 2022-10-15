@@ -69,6 +69,19 @@ deploy:dev:
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
 
+deploy:personal:
+  stage: deploy
+  image:
+    name: node:16.5.0
+    entrypoint: ['']
+  script:
+    - npm install -g aws-cdk
+    - cdk --version
+    - echo "Deploying personal project .... "
+    - npm run frontend:stack:build,deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "personal"
+
 post-deploy:prod:
   stage: post deploy
   image: curlimages/curl

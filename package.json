@@ -5,12 +5,16 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "delete:stack": "aws cloudformation delete-stack --profile=zeke --stack-name",
+    "frontend:stack:build,deploy": "npx nx build frontend && npx nx build iac && cdk deploy --app=dist/libs/iac/src/main.js"
   },
   "private": true,
   "dependencies": {
     "@tippyjs/react": "^4.2.6",
+    "aws-cdk-lib": "^2.41.0",
     "classnames": "^2.3.1",
+    "constructs": "^10.1.102",
     "core-js": "^3.6.5",
     "framer-motion": "^7.5.1",
     "react": "18.2.0",
@@ -27,6 +31,7 @@
     "@nrwl/cypress": "14.4.2",
     "@nrwl/eslint-plugin-nx": "14.4.2",
     "@nrwl/jest": "14.4.2",
+    "@nrwl/js": "14.4.2",
     "@nrwl/linter": "14.4.2",
     "@nrwl/react": "14.4.2",
     "@nrwl/storybook": "14.4.2",
@@ -48,9 +53,11 @@
     "@types/react-scroll": "^1.8.4",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "aws-cdk": "^2.41.0",
     "babel-jest": "27.5.1",
     "babel-loader": "8.1.0",
     "cypress": "^9.1.0",
+    "dotenv": "^16.0.3",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",

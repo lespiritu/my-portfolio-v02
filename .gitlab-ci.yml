@@ -83,6 +83,7 @@ deploy:personal:
   script:
     - npm install -g aws-cdk
     - cdk --version
+    - npm ci
     - echo "Deploying personal project .... "
     - npm run frontend:stack:build,deploy
   rules:

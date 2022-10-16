@@ -11,7 +11,7 @@ export const Intro = () => {
         Leon Pogi Sebulino
       </Typography>
       <Typography className={styles.title} variant="header1">
-        fullstack software engineer / devops
+        fullstack pogi
       </Typography>
       <Typography className={styles.story} variant="paragraph">
         I’m a software engineer specializing in building (and occasionally designing) exceptional

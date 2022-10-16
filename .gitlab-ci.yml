@@ -51,6 +51,10 @@ install_dependencies:
   script:
     - npm prune
     - npm ci --cache .npm --prefer-offline
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 week
   only:
     changes:
       - package.json

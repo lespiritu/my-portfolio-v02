@@ -55,9 +55,6 @@ install_dependencies:
     paths:
       - node_modules/
     expire_in: 1 week
-  only:
-    changes:
-      - package.json
 
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend

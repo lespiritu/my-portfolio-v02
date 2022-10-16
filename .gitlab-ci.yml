@@ -1,3 +1,7 @@
+.personal_pipeline_rules:
+  rules:
+    - if: $CI_COMMIT_BRANCH !=~ "/^personal/"
+
 .build:frontend: &build_frontend
   stage: build
   image: node:16.5.0
@@ -38,7 +42,7 @@ stages: # List of stages for jobs, and their order of execution
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend
   rules:
-    - if: $CI_COMMIT_BRANCH != "personal"
+    - !reference [.personal_pipeline_rules]
 
 unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
@@ -53,7 +57,7 @@ unit-test: # This job runs in the test stage.
     - echo "ui-design Unit test completed!"
     - echo "Run this to test all npx nx run-many --target=test --all"
   rules:
-    - if: $CI_COMMIT_BRANCH != "personal"
+    - !reference [.personal_pipeline_rules]
 
 lint-test: # This job also runs in the test stage.
   stage: test # It can run at the same time as unit-test-job (in parallel).
@@ -86,8 +90,6 @@ deploy:personal:
     - npm ci
     - echo "Deploying personal project .... "
     - npm run frontend:stack:build,deploy
-  rules:
-    - if: $CI_COMMIT_BRANCH == "personal"
 
 post-deploy:prod:
   stage: post deploy

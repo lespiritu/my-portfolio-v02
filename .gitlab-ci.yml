@@ -33,11 +33,27 @@
     - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
     - echo "Frontend is live"
 
+# Cache modules in between jobs
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .npm/
+
 stages: # List of stages for jobs, and their order of execution
+  - install deps
   - build
   - test
   - deploy
   - post deploy
+
+install_dependencies:
+  stage: install
+  script:
+    - npm prune
+    - npm ci --cache .npm --prefer-offline
+  only:
+    changes:
+      - package.json
 
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend
@@ -47,7 +63,7 @@ unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.
   image: node:16.5.0
   script:
-    - npm ci
+    - ls
     - echo "Running frontend unit tests... "
     - npx nx test frontend --verbose
     - echo "Frontend Unit test completed!"
@@ -55,17 +71,15 @@ unit-test: # This job runs in the test stage.
     - npx nx test ui-design --verbose
     - echo "ui-design Unit test completed!"
     - echo "Run this to test all npx nx run-many --target=test --all"
-  rules: !reference [.personal_pipeline_rules, rules]
 
 lint-test: # This job also runs in the test stage.
   stage: test # It can run at the same time as unit-test-job (in parallel).
   image: node:16.5.0
   script:
+    - ls
     - echo "Linting code... This will take about 5 seconds."
     - sleep 5
     - echo "No lint issues found."
-  rules:
-    - if: $CI_COMMIT_BRANCH != "personal"
 
 deploy:prod: # This job runs in the deploy stage.
   <<: *deploy_frontend
@@ -85,8 +99,9 @@ deploy:personal:
   script:
     - npm install -g aws-cdk
     - cdk --version
-    - npm ci
     - echo "Deploying personal project .... "
+    - ls
+    ## Build frontend, Build Stack, deploy to AWS
     - npm run frontend:stack:build,deploy
 
 post-deploy:prod:

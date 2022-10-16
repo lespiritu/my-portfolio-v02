@@ -8,10 +8,10 @@ export const Intro = () => {
         Hi, my name is
       </Typography>
       <Typography className={styles.name} variant="header1">
-        Sample
+        Zeke Sebulino
       </Typography>
       <Typography className={styles.title} variant="header1">
-        fullstack software engineer
+        fullstack software engineer / devops
       </Typography>
       <Typography className={styles.story} variant="paragraph">
         I’m a software engineer specializing in building (and occasionally designing) exceptional

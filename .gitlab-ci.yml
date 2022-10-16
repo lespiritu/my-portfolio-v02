@@ -40,14 +40,14 @@ cache:
     - .npm/
 
 stages: # List of stages for jobs, and their order of execution
-  - install deps
+  - install
   - build
   - test
   - deploy
   - post deploy
 
 install_dependencies:
-  stage: install deps
+  stage: install
   script:
     - npm prune
     - npm ci --cache .npm --prefer-offline
@@ -61,7 +61,6 @@ install_dependencies:
 
 build: # This job runs in the build stage, which runs first.
   <<: *build_frontend
-  rules: !reference [.personal_pipeline_rules, rules]
 
 unit-test: # This job runs in the test stage.
   stage: test # It only starts when the job in the build stage completes successfully.

@@ -47,7 +47,7 @@ stages: # List of stages for jobs, and their order of execution
   - post deploy
 
 install_dependencies:
-  stage: install
+  stage: install deps
   script:
     - npm prune
     - npm ci --cache .npm --prefer-offline

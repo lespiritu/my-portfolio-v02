@@ -37,7 +37,7 @@ export const Navigation: FC = () => {
   const [navShow, setNavShow] = useState(false);
   const [styleTranslate, setStyletranslate] = useState('translateX(100%)');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [showLogo, setShowLogo] = useState(false);
   // const btnClassName = btnMenuOpen ? 'btnLinesChange' : 'btnLines';
 
   //toggle button handler
@@ -47,6 +47,7 @@ export const Navigation: FC = () => {
 
   useEffect(() => {
     setStyletranslate(navShow || windowWidth > 768 ? 'translateX(0)' : 'translateX(100%)');
+    setShowLogo(windowWidth > 768 ? false : true);
   }, [navShow, windowWidth]);
 
   // when resizing window, getting the width of window
@@ -70,7 +71,7 @@ export const Navigation: FC = () => {
         <img src={logo} alt="logo" />
 
         <div style={{ transform: `${styleTranslate}` }} className={`${styles.rightSide}`}>
-          {navShow && <img src={logo} alt="logo" className={styles.logo} />}
+          {showLogo && <img src={logo} alt="logo" className={styles.logo} />}
           <ul>
             {navLinkArr.map((item, index) => (
               <li key={index}>

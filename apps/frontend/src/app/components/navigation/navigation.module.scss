@@ -54,14 +54,14 @@
 }
 
 @media (max-width: 768px) {
-  .blurBackground{
-    background-color: #00000044;
+  .blurBackground {
+    background-color: rgba(0, 0, 0, 0.8);
     height: 100vh;
     width: 100%;
-    backdrop-filter: blur(5px);
+
     cursor: pointer;
   }
-  
+
   .navHeaderPanel {
     box-sizing: border-box;
     width: 100vw;
@@ -87,6 +87,11 @@
 
     gap: 3rem;
 
+    .logo {
+      transform: scale(1.5);
+      margin-top: -150px;
+      margin-bottom: 20px;
+    }
     ul {
       display: flex;
       flex-direction: column;

@@ -1,3 +1,3 @@
 export enum DefaultDocTitle {
-  title = 'Wenky Porfolio',
+  title = 'Leoncio Espiritu',
 }

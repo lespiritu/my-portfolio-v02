@@ -2,7 +2,7 @@ import { Link } from 'react-scroll';
 
 import { FC, useEffect, useState } from 'react';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import logo from 'libs/ui-design/src/lib/assets/images/dream-dev1.png';
+import logo from 'libs/ui-design/src/lib/assets/images/leo_logo_light.png';
 
 import styles from './navigation.module.scss';
 import { Button } from '@ui-design';
@@ -28,6 +28,7 @@ export const Navigation: FC = () => {
 
   const handlerDocTitle = (title: string) => {
     setDoctTitle((previous) => (previous = `${defaultDocTitle} - ${title}`));
+    setNavShow(false);
   };
 
   //navigation data
@@ -68,10 +69,8 @@ export const Navigation: FC = () => {
       <div className={styles.navHeaderPanel}>
         <img src={logo} alt="logo" />
 
-        <div
-          style={{ transform: `${styleTranslate}` }}
-          className={`${styles.rightSide} ${styles.show}`}
-        >
+        <div style={{ transform: `${styleTranslate}` }} className={`${styles.rightSide}`}>
+          {navShow && <img src={logo} alt="logo" className={styles.logo} />}
           <ul>
             {navLinkArr.map((item, index) => (
               <li key={index}>

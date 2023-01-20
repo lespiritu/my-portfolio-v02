@@ -18,6 +18,12 @@ export interface NavigationProps {
 }
 
 export const Navigation: FC = () => {
+  //resume link
+
+  const resumeLink =
+    'https://docs.google.com/document/d/1s5E9deudqrhGrQxXraemvTaRIyFKq4Y9/edit?usp=sharing&ouid=110120993496532886738&rtpof=true&sd=true';
+  const openLink = (link: string) => window.open(link);
+
   //changing title
   const defaultDocTitle: string = DefaultDocTitle.title;
 
@@ -68,10 +74,31 @@ export const Navigation: FC = () => {
       {navShow && <div onClick={toggleBtn} className={styles.blurBackground}></div>}
 
       <div className={styles.navHeaderPanel}>
-        <img src={logo} alt="logo" />
+        <Link
+          to={'home'}
+          spy={true}
+          smooth={true}
+          offset={-120}
+          duration={500}
+          onClick={() => handlerDocTitle('Home')}
+        >
+          <img width={500} src={logo} alt="logo" />
+        </Link>
 
         <div style={{ transform: `${styleTranslate}` }} className={`${styles.rightSide}`}>
-          {showLogo && <img src={logo} alt="logo" className={styles.logo} />}
+          {showLogo && (
+            <Link
+              to={'home'}
+              spy={true}
+              smooth={true}
+              offset={-120}
+              duration={500}
+              onClick={() => handlerDocTitle('Home')}
+            >
+              <img src={logo} alt="logo" className={styles.logo} />
+            </Link>
+          )}
+
           <ul>
             {navLinkArr.map((item, index) => (
               <li key={index}>
@@ -88,7 +115,12 @@ export const Navigation: FC = () => {
               </li>
             ))}
           </ul>
-          <Button label="Resume" variant="primary" className={styles.btnResume} />
+          <Button
+            label="Resume"
+            variant="primary"
+            onClick={() => openLink(resumeLink)}
+            className={styles.btnResume}
+          />
         </div>
 
         {

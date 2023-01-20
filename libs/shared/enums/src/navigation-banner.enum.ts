@@ -1,6 +1,6 @@
 export enum NavigationBanner {
-  About = 'About',
-  Experience = 'Experience',
+  Home = 'Home',
+  Projects = 'Projects',
   Work = 'Work',
   Contact = 'Contact',
 }

@@ -3,17 +3,13 @@ interface sociaMediaDataShade {
   instagramLink?: string;
   inLink?: string;
   youtubeLink?: string;
-  fbLink?: string;
+  gitlabLink?: string;
   twitterLink?: string;
   codepenLink?: string;
 }
 
 export const sociaMediaData: sociaMediaDataShade = {
-  githubLink: 'https://www.google.com/',
-  instagramLink: 'https://www.google.com/',
-  inLink: 'https://www.google.com/',
-  youtubeLink: 'https://www.google.com/',
-  fbLink: 'https://www.google.com/',
-  twitterLink: 'https://www.google.com/',
-  codepenLink: 'https://www.google.com/',
+  githubLink: 'https://github.com/lespiritu',
+  gitlabLink: 'https://gitlab.com/espirituleoncio7',
+  inLink: 'https://www.linkedin.com/in/leoncio-espiritu-016707153/',
 };

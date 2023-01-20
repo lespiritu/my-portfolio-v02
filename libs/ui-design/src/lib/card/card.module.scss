@@ -5,22 +5,24 @@
   transition: 0.2s ease-in-out;
 }
 
+.activelinkBg {
+  background-color: rgb(74, 100, 107) !important;
+  transition: 0.4s linear;
+}
+
 .card {
   box-sizing: border-box;
   font-family: PrimaryLight;
-  background-color: $navyLight;
+
+  background-color: $cream;
   color: $white;
   border-radius: 5px;
   padding: 25px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-
   &:hover .content .contentTitle {
-    color: $yellow;
+    color: $navy;
   }
 
   .headerIcon {
@@ -32,14 +34,16 @@
     list-style: none;
     padding-left: 0;
 
+    color: $navy;
+
     @mixin iconHover {
-      color: $yellow;
+      color: $lightBlue;
     }
 
     .folderIcon {
       margin-right: auto;
       font-size: 30px;
-      color: $darkerGray;
+      color: $navy;
       transition: 0.2s ease-in-out;
 
       &:hover {
@@ -49,7 +53,7 @@
 
     .gitHubLink,
     .externalLink {
-      color: $darkerGray;
+      color: $navy;
       font-size: 20px;
       transition: 0.2s ease-in-out;
 
@@ -94,4 +98,10 @@
     flex-wrap: wrap;
     user-select: none;
   }
+}
+
+.card:hover {
+  background-color: $navyLight;
+  transform: translateY(-10px);
+  transform: scale(1.5);
 }

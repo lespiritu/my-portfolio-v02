@@ -14,11 +14,21 @@ export const Home: FC = () => {
         <Navigation />
       </header>
       <main className={cn(styles.main, styles.fillHeight)}>
-        <Intro />
+        <Section variant="primary" name="Home">
+          <Intro />
+        </Section>
+        <Section
+          name="Projects"
+          sectionNumber="01."
+          title="Some Thing I've Built"
+          variant="primary"
+        >
+          <FeaturedProjectList />
+        </Section>
 
         <Section
-          name="About"
-          sectionNumber="01."
+          name="Project Gallery"
+          sectionNumber="02."
           title="Other Noteworthy Projects"
           variant="centered"
         >
@@ -28,19 +38,10 @@ export const Home: FC = () => {
         </Section>
 
         <Section
-          name="Experience"
-          sectionNumber="02"
-          title="Some Thing I've Built"
-          variant="primary"
-        >
-          <FeaturedProjectList />
-        </Section>
-
-        <Section
           name="Work"
           className={styles.sectionExperienceTab}
           sectionNumber="03."
-          title="Other Noteworthy Projects"
+          title="Working Experience"
           variant="primary"
         >
           <ExperienceTab />

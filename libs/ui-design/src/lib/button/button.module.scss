@@ -17,11 +17,11 @@
   padding: 4px;
 
   &.primary {
-    color: $black;
-    background-color: $lightYellow;
-    border: 1px solid $lightYellow;
+    color: $darkblue;
+    background-color: $lightBlue1;
+    border: 1px solid $darkblue;
     border-radius: 4px;
-    padding: 0.45rem 0.6rem;
+    padding: 1rem;
     font-family: PrimaryMedium;
     line-height: 1;
     text-decoration: none;
@@ -31,16 +31,16 @@
     font-size: 14px;
 
     &:hover {
-      background-color: $yellow;
+      background-color: $lightBlue;
     }
   }
 
   &.outline {
-    color: $black;
-    background-color: transparent;
-    border: 1px solid $lightYellow;
+    color: $lightBlue1;
+    background-color: $transparentLigh;
+    border: 1px solid $lightBlue1;
     border-radius: 4px;
-    padding: 0.45rem 0.6rem;
+    padding: 1rem;
     font-family: PrimaryMedium;
     line-height: 1;
     text-decoration: none;
@@ -50,7 +50,8 @@
     font-size: 14px;
 
     &:hover {
-      background-color: $yellow;
+      background-color: $lightBlue;
+      color: $darkblue;
     }
   }
 }

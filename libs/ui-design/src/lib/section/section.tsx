@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 import { useAnimate } from '@ui-design';
 
 export interface sectionProps {
-  title: string;
-  sectionNumber: string;
+  title?: string;
+  sectionNumber?: string;
   variant?: 'primary' | 'centered';
   children?: React.ReactNode;
   className?: string;

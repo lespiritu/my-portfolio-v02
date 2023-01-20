@@ -4,23 +4,23 @@
   box-sizing: border-box;
   user-select: none;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 10px 30px;
   display: flex;
   justify-content: space-between;
-  background-color: $black;
+  background-color: $darkblue;
   color: $white;
   font-family: 'PrimaryMedium';
-  text-transform: lowercase;
-  letter-spacing: 1.7px;
+  letter-spacing: 1.2px;
 
   .btnResume {
     min-width: 150px;
   }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     user-select: none;
+    cursor: pointer;
   }
 
   ul {
@@ -33,7 +33,7 @@
       user-select: none;
     }
     li:hover {
-      color: $yellow;
+      color: $lightBlue1;
     }
   }
 
@@ -73,7 +73,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: $navyLight;
+    background-color: $darkblue;
     top: 0;
     z-index: 4;
     right: 0;
@@ -88,9 +88,11 @@
     gap: 3rem;
 
     .logo {
-      transform: scale(1.5);
+      transform: scale(1.2);
       margin-top: -150px;
       margin-bottom: 20px;
+
+      cursor: pointer;
     }
     ul {
       display: flex;

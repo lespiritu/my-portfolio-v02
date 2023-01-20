@@ -30,7 +30,11 @@ export const TabContent: FC<TabContentProps> = (props) => {
           <span className={styles.subTitle}>{subTitle}</span>
         </Typography>
       )}
-      {content && <Typography variant="paragraph">{content}</Typography>}
+      {content && (
+        <Typography variant="paragraph" className={styles.descriptions}>
+          {content}
+        </Typography>
+      )}
       {listContent && (
         <ul className={styles.listContent}>
           {listContent.map((item, index) => (

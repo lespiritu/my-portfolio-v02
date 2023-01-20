@@ -2,6 +2,7 @@
   width: 100%;
   position: fixed;
   z-index: 10;
+  top: 0;
 }
 
 .main {
@@ -26,9 +27,8 @@
       padding: 0px 25px;
     }
   }
-  
 }
 
-.sectionExperienceTab{
+.sectionExperienceTab {
   max-width: 768px;
 }

@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <div className={styles.footer}>
       <SocialMedia {...sociaMediaData} />
-      <div className={styles.footerBody} onClick={() => window.open('https://www.google.com/')}>
+      <div className={styles.footerBody}>
         <Typography variant="paragraph">{`Designed & Built by Kong Kwela`}</Typography>
       </div>
     </div>

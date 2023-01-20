@@ -10,7 +10,7 @@ import {
   FaLinkedinIn as IconIn,
   FaInstagram as IconInstagram,
   FaYoutube as IconYoutube,
-  FaFacebookF as IconFb,
+  FaGitlab as IconGitLab,
   FaTwitter as IconTwitter,
   FaCodepen as IconCodepen,
 } from 'react-icons/fa';
@@ -22,7 +22,7 @@ export interface SocialMediaProps {
   instagramLink?: string;
   inLink?: string;
   youtubeLink?: string;
-  fbLink?: string;
+  gitlabLink?: string;
   twitterLink?: string;
   codepenLink?: string;
 
@@ -31,7 +31,7 @@ export interface SocialMediaProps {
 }
 
 export const SocialMedia: FC<SocialMediaProps> = (props) => {
-  const { githubLink, inLink, instagramLink, youtubeLink, fbLink, twitterLink, codepenLink } =
+  const { githubLink, inLink, instagramLink, youtubeLink, gitlabLink, twitterLink, codepenLink } =
     props;
   const linkHandler = (link: string) => window.open(link);
   return (
@@ -64,10 +64,10 @@ export const SocialMedia: FC<SocialMediaProps> = (props) => {
           </span>
         </Tippy>
       )}
-      {fbLink && (
-        <Tippy content="Facebook" theme="light">
+      {gitlabLink && (
+        <Tippy content="Gitlab" theme="light">
           <span>
-            <IconFb className={styles.icon} onClick={() => linkHandler(fbLink)} />
+            <IconGitLab className={styles.icon} onClick={() => linkHandler(gitlabLink)} />
           </span>
         </Tippy>
       )}

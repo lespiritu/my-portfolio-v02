@@ -19,7 +19,7 @@
   &.primary {
     color: $darkblue;
     background-color: $lightBlue1;
-    border: 1px solid $darkblue;
+    border: 1px solid $navyLight;
     border-radius: 4px;
     padding: 1rem;
     font-family: PrimaryMedium;
@@ -27,7 +27,7 @@
     text-decoration: none;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    margin-left: 15px;
+
     font-size: 14px;
 
     &:hover {

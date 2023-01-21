@@ -6,6 +6,7 @@ import cn from 'classnames';
 import { Section } from '@ui-design';
 import { FeaturedProjectList } from '../components';
 import { Footer } from '../components';
+import { Contact } from '../components/contact';
 
 export const Home: FC = () => {
   return (
@@ -45,6 +46,10 @@ export const Home: FC = () => {
           variant="primary"
         >
           <ExperienceTab />
+        </Section>
+
+        <Section name="Contact" variant="centered" title="Contact">
+          <Contact />
         </Section>
 
         <Footer />

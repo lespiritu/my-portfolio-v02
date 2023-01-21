@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@tippyjs/react": "^4.2.6",
     "aws-cdk-lib": "^2.41.0",
     "classnames": "^2.3.1",

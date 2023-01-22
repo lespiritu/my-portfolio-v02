@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useState } from 'react';
 import { BsFolder2Open as IconOpenFolder } from 'react-icons/bs';
 import { ImGithub as IconGithub } from 'react-icons/im';
 import { HiOutlineExternalLink } from 'react-icons/hi';
+import { FaGitlab as IconGitlab } from 'react-icons/fa';
 import styles from './card.module.scss';
 import { Typography } from '@ui-design';
 import { motion } from 'framer-motion';
@@ -13,7 +15,8 @@ export interface CardProps {
   content: string;
   footer: string[];
   externalLink: string;
-  gitHubLink?: string;
+  githubLink?: string;
+  gitlabLink?: string;
   isActive: boolean;
   activeHandler: (id: number) => void;
 
@@ -21,12 +24,25 @@ export interface CardProps {
 }
 
 export const Card: FC<CardProps> = (props) => {
-  const openLink = (link?: string) => window.open(link);
+  const openLink = (e: any, link?: string): void => {
+    window.open(link);
+    e.stopPropagation();
+  };
 
-  const { id, activeHandler, externalLink, gitHubLink, title, isActive, content, footer } = props;
-  const onClickHandler = () => {
+  const {
+    id,
+    activeHandler,
+    externalLink,
+    githubLink,
+    gitlabLink,
+    title,
+    isActive,
+    content,
+    footer,
+  } = props;
+  const onClickHandler = (e: any) => {
     activeHandler(id);
-    openLink(externalLink);
+    openLink(e, externalLink);
   };
 
   const renderCardHeader = () => {
@@ -36,12 +52,17 @@ export const Card: FC<CardProps> = (props) => {
           <li className={styles.folderIcon}>
             <IconOpenFolder />
           </li>
-          {gitHubLink && (
-            <li onClick={() => openLink(gitHubLink)} className={styles.gitHubLink}>
+          {githubLink && (
+            <li onClick={(e) => openLink(e, githubLink)} className={styles.gitHubLink}>
               <IconGithub />
             </li>
           )}
-          <li onClick={() => openLink(externalLink)} className={styles.externalLink}>
+
+          {gitlabLink && (
+            <IconGitlab onClick={(e) => openLink(e, gitlabLink)} className={styles.iconGitlab} />
+          )}
+
+          <li onClick={(e) => openLink(e, externalLink)} className={styles.externalLink}>
             <HiOutlineExternalLink />
           </li>
         </ul>
@@ -52,9 +73,7 @@ export const Card: FC<CardProps> = (props) => {
   const renderCardContent = () => (
     <div className={styles.cardContent}>
       <span className={isActive ? styles.contentTitleActive : styles.contentTitle}>
-        <Typography variant="header2">
-          {title} #{id}
-        </Typography>
+        <Typography variant="header2">{title}</Typography>
       </span>
       {
         <Typography variant="paragraph" className={styles.contentBody}>
@@ -66,7 +85,7 @@ export const Card: FC<CardProps> = (props) => {
 
   const renderCardFooter = () => (
     <div className={styles.cardFooter}>
-      <ul className={styles.cardFooter}>
+      <ul>
         {footer.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

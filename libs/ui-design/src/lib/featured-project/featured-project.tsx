@@ -4,6 +4,7 @@ import styles from './featured-project.module.scss';
 import cn from 'classnames';
 import { ImGithub as IconGithub } from 'react-icons/im';
 import { HiOutlineExternalLink as IconExternalLink } from 'react-icons/hi';
+import { FaGitlab as IconGitlab } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useAnimate } from '@ui-design';
 
@@ -20,11 +21,20 @@ export interface ProjectProps {
   externalLink: string;
   imageLink: string;
   learnMoreLink?: string;
+  gitlabLink?: string;
 }
 
 export const FeaturedProject: FC<ProjectProps> = (props) => {
-  const { title, descriptionText, usedTools, githubLink, externalLink, imageLink, children } =
-    props;
+  const {
+    title,
+    descriptionText,
+    usedTools,
+    externalLink,
+    githubLink,
+    gitlabLink,
+    imageLink,
+    children,
+  } = props;
 
   const handlerClick = (link?: string) => window.open(link);
 
@@ -66,11 +76,16 @@ export const FeaturedProject: FC<ProjectProps> = (props) => {
           </ul>
         </span>
 
-        {githubLink && externalLink && (
+        {
           <span className={styles.iconLink}>
             {githubLink && (
               <IconGithub onClick={() => handlerClick(githubLink)} className={styles.iconGithub} />
             )}
+
+            {gitlabLink && (
+              <IconGitlab onClick={() => handlerClick(gitlabLink)} className={styles.iconGitlab} />
+            )}
+
             {externalLink && (
               <IconExternalLink
                 onClick={() => handlerClick(externalLink)}
@@ -78,7 +93,7 @@ export const FeaturedProject: FC<ProjectProps> = (props) => {
               />
             )}
           </span>
-        )}
+        }
 
         {children && <span className={styles.button}>{children}</span>}
       </div>

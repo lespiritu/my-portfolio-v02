@@ -6,7 +6,6 @@
 }
 
 .activelinkBg {
-  background-color: rgb(74, 100, 107) !important;
   transition: 0.4s linear;
 }
 
@@ -14,10 +13,10 @@
   box-sizing: border-box;
   font-family: PrimaryLight;
 
-  background-color: $cream;
+  background-color: $navyLight;
   color: $white;
   border-radius: 5px;
-  padding: 25px;
+  padding: 20px 30px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 
@@ -29,20 +28,22 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
     align-items: center;
     list-style: none;
     padding-left: 0;
 
+    border-bottom: 1px dashed $lighterGray;
     color: $navy;
 
     @mixin iconHover {
-      color: $lightBlue;
+      color: $yellow;
     }
 
     .folderIcon {
       margin-right: auto;
-      font-size: 30px;
+      font-size: 35px;
       color: $navy;
       transition: 0.2s ease-in-out;
 
@@ -52,9 +53,10 @@
     }
 
     .gitHubLink,
-    .externalLink {
+    .externalLink,
+    .iconGitlab {
       color: $navy;
-      font-size: 20px;
+      font-size: 25px;
       transition: 0.2s ease-in-out;
 
       &:hover {
@@ -66,17 +68,18 @@
   .cardContent {
     .contentTitleActive {
       font-size: 2rem;
-      margin-top: 20px;
+      margin: 20px 0;
       display: block;
 
       transition: 0.3s ease-in-out;
       color: $yellow;
+
       user-select: none;
     }
 
     .contentTitle {
       font-size: 2rem;
-      margin-top: 20px;
+      margin: 20px 0;
       display: block;
 
       transition: 0.3s ease-in-out;
@@ -88,20 +91,23 @@
     }
   }
 
-  .cardFooter {
+  .cardFooter ul {
     display: flex;
     gap: 10px;
-    font-size: 14px;
+    font-size: 13px;
     list-style: none;
-    padding: 0;
-    margin-top: 10px;
+
+    margin-top: 15px;
     flex-wrap: wrap;
     user-select: none;
+
+    border-top: 1px dashed $lighterGray;
+    padding: 20px 0;
   }
 }
 
 .card:hover {
-  background-color: $navyLight;
+  background-color: $lightBlue2;
   transform: translateY(-10px);
   transform: scale(1.5);
 }

@@ -6,7 +6,7 @@ export const Footer = () => {
     <div className={styles.footer}>
       <SocialMedia {...sociaMediaData} />
       <div className={styles.footerBody}>
-        <Typography variant="paragraph">{`Designed & Built by Kong Kwela`}</Typography>
+        <Typography variant="paragraph">{`Designed & Built by Leoncio Espiritu`}</Typography>
       </div>
     </div>
   );
